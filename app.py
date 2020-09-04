@@ -19,6 +19,7 @@ mysql = MySQL(app)
 
 @app.route('/story/<string:userId>')
 def show_stories(userId):
+    # Selects stories matching conditions
     stories = f"SELECT user_id, title FROM stories WHERE user_id={userId}"
     conn = mysql.connection
     cur = conn.cursor()
@@ -29,6 +30,7 @@ def show_stories(userId):
 
 @app.route('/story/<id>')
 def show_story(id):
+    # Selects stories matching conditions
     stories = f"SELECT * FROM stories WHERE id={id}"
     conn = mysql.connection
     cur = conn.cursor()
@@ -39,6 +41,7 @@ def show_story(id):
 
 @app.route('/title/<title>')
 def show_titles(title):
+    # Selects titles matching conditions
     titles = f"SELECT title FROM stories WHERE title LIKE '%{title}%'"
     conn = mysql.connection
     cur = conn.cursor()

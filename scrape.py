@@ -12,9 +12,11 @@ config = {
 cnx = mysql.connector.connect(**config)
 
 with cnx.cursor() as cursor:
+    # If table already exists, drop it
     cursor.execute("DROP TABLE IF EXISTS stories;")
 
 with cnx.cursor() as cursor:
+    # creates table
     create_table = (
         "CREATE TABLE `stories` ("
         "  `id` int(11) NOT NULL AUTO_INCREMENT,"
@@ -31,6 +33,7 @@ with cnx.cursor() as cursor:
     for todo in data[:100]:
         completed = todo['completed']
         if completed:
+            # checks 'comleted' status and if True, then inserting data in db.
             title = todo['title']
             user_id = todo['userId']
             data = {'title': title, 'user_id': user_id}
