@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOs by userId</title>
+</head>
+<body>
+{{ request.view_args }}
+
+stories:
+{% for story in qs %}
+    {{ story|tojson }}
+{% else %}
+    There are no stories for this userId :(
+{% endfor %}
+</body>
+</html>
