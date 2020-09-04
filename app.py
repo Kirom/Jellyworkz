@@ -2,9 +2,18 @@ from flask import Flask, render_template
 from flask_mysql_connector import MySQL
 
 app = Flask(__name__)
-app.config['MYSQL_USER'] = 'user'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DATABASE'] = 'flask_db'
+
+config = {
+    'user': 'user',
+    'password': 'password',
+    'host': '127.0.0.1',
+    'database': 'flask_db',
+}
+
+app.config['MYSQL_USER'] = config['user']
+app.config['MYSQL_PASSWORD'] = config['password']
+app.config['MYSQL_DATABASE'] = config['database']
+app.config['MYSQL_HOST'] = config['host']
 mysql = MySQL(app)
 
 
