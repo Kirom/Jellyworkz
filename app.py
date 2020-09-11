@@ -19,6 +19,7 @@ app.config['MYSQL_HOST'] = config['host']
 mysql = MySQL(app)
 
 
+# route for printing json of all stories related to userId
 @app.route('/user/<string:userId>')
 def show_stories(userId):
     # Selects stories matching conditions
@@ -30,6 +31,7 @@ def show_stories(userId):
     return render_template('user_id.html', qs=qs)
 
 
+# route for printing json of specific story id
 @app.route('/story/<id>')
 def show_story(id):
     # Selects stories matching conditions
@@ -41,6 +43,7 @@ def show_story(id):
     return render_template('id.html', qs=qs)
 
 
+# route for printing all titles containing the data in the title
 @app.route('/title/<title>')
 def show_titles(title):
     # Selects titles matching conditions

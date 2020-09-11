@@ -1,7 +1,7 @@
 import requests
-import json
 import mysql.connector
 
+# Configuring database
 config = {
     'user': 'user',
     'password': 'password',
@@ -26,11 +26,11 @@ with cnx.cursor() as cursor:
         ")")
     cursor.execute(create_table)
 
-todos = requests.get('https://jsonplaceholder.typicode.com/todos/').text
-data = json.loads(todos)
+# fetching all TODOs from API
+todos = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
 
 with cnx.cursor() as cursor:
-    for todo in data[:100]:
+    for todo in todos[:100]:
         completed = todo['completed']
         if completed:
             # checks 'comleted' status and if True, then inserting data in db.
