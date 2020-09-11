@@ -3,6 +3,7 @@ from flask_mysql_connector import MySQL
 
 app = Flask(__name__)
 
+# Configuring database
 config = {
     'user': 'user',
     'password': 'password',
@@ -10,6 +11,7 @@ config = {
     'database': 'flask_db',
 }
 
+# Configuring database
 app.config['MYSQL_USER'] = config['user']
 app.config['MYSQL_PASSWORD'] = config['password']
 app.config['MYSQL_DATABASE'] = config['database']
@@ -17,7 +19,7 @@ app.config['MYSQL_HOST'] = config['host']
 mysql = MySQL(app)
 
 
-@app.route('/story/<string:userId>')
+@app.route('/user/<string:userId>')
 def show_stories(userId):
     # Selects stories matching conditions
     stories = f"SELECT user_id, title FROM stories WHERE user_id={userId}"

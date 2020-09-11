@@ -38,7 +38,8 @@ with cnx.cursor() as cursor:
             user_id = todo['userId']
             data = {'title': title, 'user_id': user_id}
             add_story = (
-                "INSERT INTO stories (title, user_id) VALUES (%(title)s, %(user_id)s);"
+                "INSERT INTO stories (title, user_id) "
+                "VALUES (%(title)s, %(user_id)s);"
             )
             cursor.execute(add_story, data)
 
